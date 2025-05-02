@@ -1,16 +1,16 @@
-FROM node:slim
+FROM oven/bun:latest
 
 WORKDIR /app
 
 COPY package.json ./
-COPY package-lock.json ./
+COPY bun.lock ./
 
-RUN npm install
+RUN bun install
 
 COPY . .
 
 EXPOSE 3000
 
-RUN npm run build
+RUN bun run build
 
-CMD ["npm", "start"]
+CMD ["bun", "start"]
